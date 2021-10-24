@@ -58,14 +58,16 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     #dir=`pwd`
-    DIR="$(echo -e "\e[0;40;92m")"
-    ARROW0="$(echo -e "\e[0;49;32m")"
-    ARROW1="$(echo -e "\e[1;40;92m")"
-    ARROW2="$(echo -e "\e[1;49;30m")"
-    HOST="$(echo -e "\e[0;102;90m")"
-    RESET="$(echo -e "\033[00m")"
+    DIR="$(echo -e "\\e[0;40;92m")"
+    ARROW0="$(echo -e "\\e[0;49;32m")"
+    ARROW1="$(echo -e "\\e[1;40;92m")"
+    ARROW2="$(echo -e "\\e[1;49;30m")"
+    HOST="$(echo -e "\\e[0;102;90m")"
+    RESET="$(echo -e "\\033[00m")"
  
-    PS1='${ARROW0}╭─${RESET}${HOST} \u@\h${RESET}${ARROW1}${RESET}${DIR}\w${RESET}${ARROW2}\n${RESET}${ARROW0}╰─➤${RESET}'
+    #PS1='\[\e[0;49;32m\]╭─${RESET}${HOST} ${debian_chroot:+($debian_chroot)}\u@\h${RESET}${ARROW1}${RESET}${DIR}\w${RESET}${ARROW2}\n${RESET}${ARROW0}╰─➤ ${RESET}'
+
+    PS1='\[\e[1;49;32m\]╭─${debian_chroot:+($debian_chroot)}\[\e[00m\[\e[1;102;90m\] \u@\h\[\e[00m\[\e[1;40;92m\]\[\e[00m\[\e[0;40;92m\]\w\[\e[00m\[\e[1;49;30m\]\[\e[00m\[\e[0;49;32m\]\n╰─➤ \[\e[00m'
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
